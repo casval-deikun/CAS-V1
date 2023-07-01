@@ -1,0 +1,11 @@
+{
+  "name": "claytn-send",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "web3": "^1.4.11"
+  }
+}
