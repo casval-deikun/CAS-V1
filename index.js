@@ -4,12 +4,15 @@ window.addEventListener('load', async () => {
   // Check if Kaikas is available
   if (typeof window.klaytn !== 'undefined') {
     try {
-      // Request access to the user's accounts
-      await cav.klay.accounts.wallet.add(window.klaytn);
+      // Import wallet from JSON file
+      const jsonFile = '<path_to_json_file>'; // JSON 파일 경로
+      const password = '<wallet_password>'; // 지갑 비밀번호
+      const walletInstance = cav.klay.accounts.wallet.add(jsonFile, password);
+
       // Enable the Send 20 KLAY button
       document.getElementById('sendKlayBtn').disabled = false;
     } catch (error) {
-      // User denied access to accounts
+      // Error occurred during wallet import
       console.error(error);
     }
   } else {
@@ -29,7 +32,7 @@ document.getElementById('sendKlayBtn').addEventListener('click', async () => {
     const amount = cav.utils.toPeb('20000', 'KLAY');
     const feePayer = cav.klay.accounts.wallet[0].address;
     const feeRatio = 1.1;
-    
+
     const tx = {
       type: 'VALUE_TRANSFER',
       from: selectedAccount,
@@ -38,7 +41,7 @@ document.getElementById('sendKlayBtn').addEventListener('click', async () => {
       feeRatio: feeRatio,
       gas: '300000',
     };
-    
+
     const signedTx = await cav.klay.accounts.signTransaction(tx, feePayer);
     const receipt = await cav.klay.sendSignedTransaction(signedTx.rawTransaction);
 
