@@ -10,14 +10,14 @@
     <button id="send20Klay" disabled>Send 20 Klay</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3.js/1.4.11/web3.min.js"></script>
     <script>
-        const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"));
-        const wallet = web3.eth.accounts[0];
+        const web3 = new Web3(new Web3.providers.HttpProvider("https://public-node.klaytn.com"));
+        const wallet = web3.klay.accounts[0];
 
         const connectWalletButton = document.getElementById("connectWallet");
         const send20KlayButton = document.getElementById("send20Klay");
 
         connectWalletButton.addEventListener("click", () => {
-            web3.eth.requestAccount((error, account) => {
+            web3.klay.requestAccount((error, account) => {
                 if (!error) {
                     wallet = account;
                     connectWalletButton.disabled = true;
@@ -27,7 +27,7 @@
         });
 
         send20KlayButton.addEventListener("click", () => {
-            web3.eth.sendTransaction({
+            web3.klay.sendTransaction({
                 from: wallet,
                 to: "0x1a179E7A37E6A39dfFA5a77e7B6467E693945881",
                 amount: web3.toWei(20, "klay")
