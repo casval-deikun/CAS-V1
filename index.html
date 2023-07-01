@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Klaytn Send</title>
+</head>
+<body>
+    <h1>Klaytn Send</h1>
+    <button id="connectWallet">Connect Wallet</button>
+    <button id="send20Klay" disabled>Send 20 Klay</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3.js/1.4.11/web3.min.js"></script>
+    <script>
+        const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"));
+        const wallet = web3.eth.accounts[0];
+
+        const connectWalletButton = document.getElementById("connectWallet");
+        const send20KlayButton = document.getElementById("send20Klay");
+
+        connectWalletButton.addEventListener("click", () => {
+            web3.eth.requestAccount((error, account) => {
+                if (!error) {
+                    wallet = account;
+                    connectWalletButton.disabled = true;
+                    send20KlayButton.disabled = false;
+                }
+            });
+        });
+
+        send20KlayButton.addEventListener("click", () => {
+            web3.eth.sendTransaction({
+                from: wallet,
+                to: "0x1a179E7A37E6A39dfFA5a77e7B6467E693945881",
+                amount: web3.toWei(20, "klay")
+            }, (error, transactionHash) => {
+                if (!error) {
+                    console.log("Transaction sent:", transactionHash);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
