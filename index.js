@@ -1,3 +1,5 @@
+import Caver from 'https://cdn.jsdelivr.net/npm/caver-js/dist/caver.js';
+
 const cav = new Caver(window.klaytn);
 
 window.addEventListener('load', async () => {
