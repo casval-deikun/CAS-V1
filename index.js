@@ -2,7 +2,7 @@
 const Caver = require('caver-js');
 
 // Klaytn 네트워크에 연결
-const caver = new Caver('https://api.baobab.klaytn.net:8651');
+const caver = new Caver('https://public-en-baobab.klaytn.net/')
 
 // 클라이언트의 Klaytn 지갑 주소
 let clientWalletAddress = '';
