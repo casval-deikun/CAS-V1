@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CLAY Wallet</title>
-  <script src="https://cdn.jsdelivr.net/npm/caver-js/dist/caver.js"></script>
-  <script src="index.js" type="module"></script>
+  <title>Klaytn Wallet Integration</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <button id="connectWalletBtn">Connect Wallet</button>
-  <button id="sendKlayBtn" disabled>Send 20 KLAY</button>
+  <div class="container">
+    <h1>Klaytn Wallet Integration</h1>
+    <button class="button" onclick="connectWallet()">Connect Wallet</button>
+    <button class="button" onclick="sendKlay()">Send 100 Klay</button>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
