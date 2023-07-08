@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Polygon Dapp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polygon DApp</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Polygon Dapp</h1>
-    <div id="app"></div>
-    <script src="app.js"></script>
+  <h1>Polygon DApp</h1>
+  
+  <button id="connectWalletButton" onclick="connectWallet()">Connect Wallet</button>
+  <button id="sendMaticButton" onclick="sendMatic()" disabled>Send 20 Matic</button>
+
+  <script src="web3.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
